@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load blog_tags %}
+{% block title %}Article--Moments{% endblock %}
+
+
+
+{% block content %}
+<h3>Latest Posts on Article</h3>
+	{% show_latest_posts 5 %}&nbsp;
+{% show_most_commented as show_most_comment %}
+<h3>Most Commented</h3>
+	{% for post in show_most_comment %}
+	<h5>
+		<li>
+			<a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+		</li>
+	</h5>
+	{% endfor %}&nbsp;
+<h3>Total Posts in Article</h3>
+<h4>{% total_post %} Posts<p class="text-muted">Still counting..</p></h4>
+{% endblock %}
+

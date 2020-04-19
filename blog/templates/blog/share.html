@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>Share-Post</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+	<div class="container-fluid">
+		<h1 class="display-5">Post Share</h1>
+		{% if sent %}
+		  <p class="display-4">{{ post.title }} was send successfully to {{ form.cleaned_data.to }}</p>
+		{% else %}
+		
+			<form method="POST">
+				{% csrf_token %}
+				{{ form.as_p}}
+				<input type="submit" name="Send Mail">
+			</form>
+		{% endif %}
+	</div>
+</body>
+</html>

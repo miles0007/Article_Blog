@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load blog_tags %}
+{% block title %}Article{% endblock %}
+
+{% block content %}
+<h6>
+	Trending : 
+{% for tag in tags.all %}
+	<img src="{% static 'img/hash1.png' %}" class="image">
+	<a href="{% url 'blog:tag_list' tag.slug %}">{{ tag.name|title }}</a>
+	{% if not forloop.last %} {% endif %}
+	{% endfor %}
+</h6>
+<hr>&nbsp;
+{% if tag %}
+  <h4 class="display-4">Tagged Result of {{ tag.name }}
+{% endif %}
+
+{% for post in posts %}
+	<h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+	<p class="para">{{ post.body|markdown|truncatewords_html:30 }}</p>
+	&nbsp;
+{% endfor %}
+{% include 'blog/pagination.html' with page=posts %}
+{% endblock %}

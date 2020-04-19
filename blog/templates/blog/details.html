@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load blog_tags %}
+{% load static %}
+{% block title%}
+{{ post.title }}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<h1>{{ post.title }}</h1>
+	<p class="hint">Post by: {{ post.author|title }} on {{post.created}}</p>
+	<hr>&nbsp;
+	<div class="col-sm-6 col-md-6 col-lg-12" style="margin-bottom: 5px;">
+		<img src="{{ post.image.url }}" class="img-fluid fit-image">
+	</div>
+	<div class="text-justify">
+		<p>{{ post.body|markdown }}</p>
+	</div>
+	<div>
+		<a href="{% url 'blog:post_share' post.id %}">Share Post Via Mail</a>
+	</div>
+	<hr>
+	<h2>Similar Posts</h2>
+	{% for post in similar_posts %}
+	<p class="display-5">
+	  <ul>
+	  	<li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+	  </ul>
+    </p>
+	  {% empty %}
+	    <p class="text-muted">There are no Similar Posts.</p>
+  	{% endfor %}
+  	<hr>
+	<div>
+		{% with comment.count as total_count %}
+		  <h2>{{ total_count }} Comment{{total_count|pluralize }}</h2>
+	  	{% endwith %}
+	</div>
+	<div class="comment">
+	{% for com in comment %}
+	<p><strong>{{ com.name }}</strong> on {{ com.created }}</p>
+	<h6><i>{{ com.body|linebreaks }}</i></h6>
+	{% empty %}
+	 <p>No Comments.</p>
+	{% endfor %}
+	<hr>
+	<h4>Comments</h4>
+	<form method="POST">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" name="Add comment">
+	</form>
+	</div>
+</div>
+{% endblock %}

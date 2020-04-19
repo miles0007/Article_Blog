@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load blog_tags %}
+{% block title %}Article--Search{% endblock %}
+
+{% block content %}
+  {% if query %}
+    <h1>Post containing "{{ query }}"</h1>
+    <h3>
+    	{% with results.count as total_count %}
+    	{{ total_count }} result{{ total_count|pluralize }} Founded
+    	{% endwith %}
+   {% endif %}
+	</h3>
+	{% for post in results %}
+	  <ul>
+	  	<li>
+	  		<h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+	  		{{ post.body|markdown|truncatewords_html:8 }}
+	  	</li>
+	  </ul>
+	  {% empty %}
+	    <p>No Results Found.</p>
+	{% endfor %}
+{% endblock %}

@@ -1,0 +1,50 @@
+{% load cloudinary %}
+{% load blog_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/sticky-footer/">
+	<link rel="stylesheet" href="https://res.cloudinary.com/drxjql1j7/raw/upload/v1587007540/static/css/bootstrap.min_vnbsdt.css">
+	<link rel="stylesheet" href="https://res.cloudinary.com/drxjql1j7/raw/upload/v1587007538/static/css/style_jma58q.css">
+</head>
+<body>
+	<nav class="navbar bg-dark navbar-dark navbar-expand-sm mb-3">
+		<div class="container">
+			<a class="navbar-brand m-0 mr-2" href="{% url 'blog:post_list_view' %}">Article</a>
+			<button type="button" class="navbar-toggler"
+			 data-toggle="collapse" data-target="#q"
+			 aria-controls="q" aria-expanded="false" aria-label="toggle">
+			 	<span class="navbar-toggler-icon"></span>
+			 </button>
+			<div class="collapse navbar-collapse justify-content-end mt-auto" id="q">
+				<div class="navbar-nav">
+					<a class="nav-item nav-link mr-2 " href="{% url 'blog:all_tags' %}">Tags</a>
+					<a class="nav-item nav-link mr-2" href="{% url 'blog:moments_view' %}">Moments</a>
+					<a class="nav-item nav-link mr-2" href="{% url 'blog:about' %}">About</a>
+					<form class="form-inline" method="get" action="{% url 'blog:post_search' %}">
+						<input class="form-control mr-2" type="text" name="query" placeholder="Enter keywords">
+						<input class="btn btn-outline-light" type="submit" value="search">
+					</form>
+				</div>
+			</div>
+			
+		</div>
+	</nav>
+	<div class="container">
+			{% block content %}{% endblock %}
+	</div>
+	<footer class="footer mt-auto py-3 text-center">
+	  <div class="container">
+	    <span class="text-light text-center">&copy;miles007 2020</span>
+	  </div>
+	</footer>
+	<script src="https://res.cloudinary.com/drxjql1j7/raw/upload/v1587007537/static/js/jquery.min_s9s30k.js"></script>
+    <script src="https://res.cloudinary.com/drxjql1j7/raw/upload/v1587007530/static/js/popper.min_keqszy.js"></script>
+    <script src="https://res.cloudinary.com/drxjql1j7/raw/upload/v1587007534/static/js/bootstrap.min_ctomwg.js"></script>
+</body>
+</html>
+

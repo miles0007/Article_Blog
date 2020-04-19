@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load blog_tags %}
+{% load static %}
+
+{% block content %}
+<h6>
+{% for tag in tags.all %}
+	<img src="{% static 'img/hash1.png' %}" class="image">
+	<a href="{% url 'blog:tag_list' tag.slug %}">{{ tag.name|title }}</a>
+	{% if not forloop.last %} {% endif %}
+	{% endfor %}
+</h6>
+&nbsp;
+{% endblock %}
+
