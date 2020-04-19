@@ -25,7 +25,7 @@ SECRET_KEY = 'zyg+hrq2c-wc8^)+ayf_u4m4rueii#ez+-4%0(=87=^*n9xe#a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['intense-brook-61288.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 SITE_ID = 1
 
@@ -90,9 +90,9 @@ WSGI_APPLICATION = 'website.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'de93s65kra59l5',
-        'USER': 'kggmbrjljtmzbt',
-        'PASSWORD': '2b0affeeff902444c2793e2f74b5fcea8310e5c504d853462ba361d139da6750',
+        'NAME': 'xxxxxxxxxxxxxxx',
+        'USER': 'xxxxxxxxxxxxxxx',
+        'PASSWORD': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
         'HOST': 'ec2-34-234-228-127.compute-1.amazonaws.com',
         'PORT': '5432',
         
@@ -136,7 +136,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 
 EMAIL_HOST_USER = 'kavinkarthik025@gmail.com' 
 
-EMAIL_HOST_PASSWORD = 'zgjghiophllphonl'
+EMAIL_HOST_PASSWORD = 'xxxxxxxxxxxxxxxxxxxxx'
 
 EMAIL_PORT = 587 
 
@@ -153,8 +153,8 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR,'media')
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'drxjql1j7',
-    'API_KEY': '531278192757833',
-    'API_SECRET': 'LTVn16Y3rK8OHgasK-jtT6DQFe8',
+    'CLOUD_NAME': 'xxxxxxxxxxxxxxxxxxxxx',
+    'API_KEY': 'xxxxxxxxxxxxxxxxxxxxxxxx',
+    'API_SECRET': 'xxxxxxxxxx-xxxxxxxxxxxxx',
 }
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
